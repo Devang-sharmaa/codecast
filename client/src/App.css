@@ -1,9 +1,21 @@
+/* Editor Styling */
 .codemirror {
-  min-height: "calc(100vh -20px)";
-  font-size: "20px";
-  line-height: "1.6";
-  padding-top: "20px";
+  min-height: calc(100vh - 20px);
+  font-size: 20px;
+  line-height: 1.6;
+  padding-top: 20px;
+  background-color: #fafbfc;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+.codemirror:hover {
+  background-color: #f0f1f3;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Compile Window */
 .compile-window {
   position: fixed;
   bottom: 0;
@@ -11,24 +23,68 @@
   width: 100%;
   max-height: 40%;
   background-color: #f8f9fa;
-  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), max-height 0.3s ease-in-out;
   z-index: 10;
   overflow-y: auto;
+  border-top: 2px solid #dee2e6;
+  border-radius: 8px 8px 0 0;
 }
 
+/* Slide-Up/Down Animations */
 .slide-up {
   transform: translateY(0);
 }
-
 .slide-down {
   transform: translateY(100%);
 }
 
+/* Output Box */
 .output-box {
   height: 150px;
   background-color: #e9ecef;
-  padding: 10px;
+  padding: 15px;
   overflow-y: auto;
   border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.05);
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  color: #495057;
+  line-height: 1.4;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+/* Add subtle glow effect on hover */
+.output-box:hover {
+  background-color: #f5f6f7;
+  border: 1px solid #adb5bd;
+}
+
+/* Scrollbar Styling */
+.compile-window::-webkit-scrollbar,
+.output-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.compile-window::-webkit-scrollbar-thumb,
+.output-box::-webkit-scrollbar-thumb {
+  background: #ced4da;
+  border-radius: 4px;
+}
+
+.compile-window::-webkit-scrollbar-thumb:hover,
+.output-box::-webkit-scrollbar-thumb:hover {
+  background: #adb5bd;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .codemirror {
+    font-size: 18px;
+  }
+  .output-box {
+    height: 120px;
+    font-size: 0.85rem;
+  }
 }

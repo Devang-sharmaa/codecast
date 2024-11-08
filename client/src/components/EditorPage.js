@@ -18,7 +18,7 @@ const LANGUAGES = [
   "java",
   "cpp",
   "nodejs",
-  "c",
+  "c/c++",
   "ruby",
   "go",
   "scala",

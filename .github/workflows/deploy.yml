@@ -19,17 +19,26 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      # Install server dependencies
+      - name: Install server dependencies
+        working-directory: ./server
         run: npm install
 
-      - name: Build project
+      # Install client dependencies
+      - name: Install client dependencies
+        working-directory: ./client
+        run: npm install
+
+      # Build client project
+      - name: Build client project
+        working-directory: ./client
         run: npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
           name: production-files
-          path: ./dist
+          path: ./client/dist
 
   deploy:
     name: Deploy
